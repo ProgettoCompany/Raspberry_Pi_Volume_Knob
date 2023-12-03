@@ -1,0 +1,13 @@
+[Unit]
+Description=Potentiometer Volume Control Service
+After=network.target sound.target
+
+[Service]
+ExecStartPre=/bin/sleep 10
+ExecStart=/home/baller/dev/volume-knob/env/bin/python3 /home/baller/dev/volume-knob/main.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=file:%h/Desktop/volume.log
+
+[Install]
+WantedBy=default.target
